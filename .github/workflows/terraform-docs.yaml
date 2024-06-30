@@ -1,0 +1,24 @@
+name: Generate terraform docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Generate TF Docs
+        uses: terraform-docs/gh-actions@v1.2.0
+        with:
+          working-dir: |
+            .
+            modules/networking
+            modules/s3
+          output-file: README.md
+          output-method: inject
+          git-push: true          
