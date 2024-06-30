@@ -1,0 +1,45 @@
+name: Terraform Apply Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        default: 'dev'
+  push:
+    branches:
+      - main
+
+jobs:
+  apply:
+    name: Apply Terraform Changes
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      id-token: write  # Required for AWS credentials configuration
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials Action
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Initialize Terraform
+        run: terraform init -backend-config=environments/dev/backend.conf
+
+      - name: Plan Terraform changes
+        run: terraform plan -no-color
+
+      # Note: Use workflow_dispatch input to control manual approval outside of GitHub Actions.
+      # Here we assume you will trigger the workflow manually via UI after the plan is checked.
+
+      - name: Apply Terraform Changes
+        if: github.event.inputs.approve == 'true' || github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve -no-color
