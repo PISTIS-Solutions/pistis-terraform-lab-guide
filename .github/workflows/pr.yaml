@@ -42,9 +42,6 @@ jobs:
       - name: Plan Terraform changes
         run: terraform plan
 
-      # - name: Terraform apply
-      #   id: apply
-      #   run: terraform apply -auto-approve -no-color  
 
       - name: Show Pull Request Comments
         id: show-comments
