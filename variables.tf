@@ -52,3 +52,38 @@ variable "enable_vpn_gateway" {
   type        = bool
   description = "Should be true if you want to create a new VPN Gateway resource and attach it to the VPC"
 }
+
+##############
+# s3 variable 
+##############
+
+variable "bucket" {
+  description = "The name of the S3 bucket"
+  type        = string
+}
+
+variable "tags" {
+  description = "A map of tags to apply to the S3 bucket"
+  type        = map(string)
+}
+
+
+variable "status" {
+  description = "value"
+  type        = string
+}
+
+variable "object_ownership" {
+  description = "value"
+  type        = string
+}
+
+variable "type" {
+  description = "value"
+  type        = string
+}
+
+variable "permission" {
+  description = "value"
+  type        = string
+}  
