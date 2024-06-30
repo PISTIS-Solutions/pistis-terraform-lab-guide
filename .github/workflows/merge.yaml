@@ -30,15 +30,15 @@ jobs:
       - name: Terraform fmt
         id: fmt
         run: terraform fmt
-          
+
+      - name: Terraform Init
+        id: init
+        run: terraform init --backend-config environments/dev/backend.conf
+
       - name: Terraform validate
         id: validate
         run: terraform validate
 
-      - name: Terraform Init
-        id: init
-        run:  terraform init -backend-config=environments/dev/backend.conf
-      
       - name: Terraform Plan
         id: plan
         run: terraform plan --var-file environments/dev/dev.tfvars
