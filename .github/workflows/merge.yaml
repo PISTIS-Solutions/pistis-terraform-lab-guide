@@ -75,4 +75,4 @@ jobs:
         run: terraform init --backend-config environments/dev/backend.conf
   
       - name: Terraform Apply to dev
-        run: terraform apply --var-file environments/dev/dev.tfvars --auto-approve    
+        run: terraform destroy --var-file environments/dev/dev.tfvars --auto-approve    
