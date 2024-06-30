@@ -9,6 +9,10 @@ additional_tags = {
   Environment = "dev"
 }
 
+tags = {
+  Name = "pistis bucket"
+
+}
 
 ####################
 # networking Values
@@ -32,3 +36,7 @@ type = "CanonicalUser"
 permission = "WRITE_ACP"
 status = "Enabled"
 
+tags = {
+  Name = "pistis bucket"
+
+}

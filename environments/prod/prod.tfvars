@@ -32,3 +32,7 @@ type = "CanonicalUser"
 permission = "WRITE_ACP"
 status = "Enabled"
 
+tags = {
+  Name = "pistis bucket"
+
+}
