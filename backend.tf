@@ -5,6 +5,5 @@
 
 
 terraform {
-  backend "remote" {
-  }
+  backend "remote" {}
 }
