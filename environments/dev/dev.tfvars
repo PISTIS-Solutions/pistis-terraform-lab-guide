@@ -9,11 +9,6 @@ additional_tags = {
   Environment = "dev"
 }
 
-tags = {
-  Name = "pistis bucket"
-
-}
-
 ####################
 # networking Values
 ####################
