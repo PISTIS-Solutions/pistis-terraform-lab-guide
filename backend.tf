@@ -1,8 +1,10 @@
 # terraform {
-#   backend "remote" {
-#   }
+#   backend "s3" {}
 # }
 
+
+
 terraform {
-  backend "s3" {}
+  backend "remote" {
+  }
 }
